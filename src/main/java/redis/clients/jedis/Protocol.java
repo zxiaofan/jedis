@@ -92,7 +92,7 @@ public final class Protocol {
             throw new JedisException(e);
         }
 
-        return new String(read, CHARSET);
+        return new String(read);
     }
 
     private Integer processInteger(RedisInputStream is) {
