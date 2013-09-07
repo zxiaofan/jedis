@@ -2125,6 +2125,30 @@ public class BinaryJedis implements BasicCommands, BinaryJedisCommands, MultiKey
 	return pipeline;
     }
 
+    public void subscribe(final JedisPubSub jedisPubSub,
+            final String... channels) {
+        client.setTimeoutInfinite();
+        jedisPubSub.proceed(client, channels);
+        client.rollbackTimeout();
+    }
+
+    public void unsubscribe(final JedisPubSub jedisPubSub,
+            final String... channels) {
+        jedisPubSub.unsubscribe(channels);
+    }
+
+    public Long publish(final String channel, final String message) {
+        client.publish(channel, message);
+        return client.getIntegerReply();
+    }
+
+    public void psubscribe(final JedisPubSub jedisPubSub,
+            final String... patterns) {
+        client.setTimeoutInfinite();
+        jedisPubSub.proceedWithPatterns(client, patterns);
+        client.rollbackTimeout();
+    }
+
     public Long zcount(final byte[] key, final double min, final double max) {
     	return zcount(key, toByteArray(min), toByteArray(max));
     }

@@ -3097,4 +3097,8 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
     	String relpy = client.getBulkReply();
     	return (relpy != null ? new Double(relpy) : null);
     }
+
+    public boolean isSameShardAs(Jedis other) {
+        return client.getHost().equals(other.getClient().getHost()) && client.getPort() == other.getClient().getPort();
+    }
 }

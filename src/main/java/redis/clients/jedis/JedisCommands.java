@@ -211,4 +211,11 @@ public interface
     Long bitcount(final String key);
 
     Long bitcount(final String key, long start, long end);
+
+    Long publish(final String channel, final String message);
+
+    void subscribe(final JedisPubSub jedisPubSub, final String... channels);
+
+    void unsubscribe(final JedisPubSub jedisPubSub, final String... channels);
+
 }
