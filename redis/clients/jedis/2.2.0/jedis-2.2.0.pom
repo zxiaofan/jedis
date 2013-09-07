@@ -41,6 +41,7 @@
     <connection>scm:git:git@github.com:xetorthio/jedis.git</connection>
     <url>scm:git:git@github.com:xetorthio/jedis.git</url>
     <developerConnection>scm:git:git@github.com:xetorthio/jedis.git</developerConnection>
+    <tag>jedis-2.2.0</tag>
   </scm>
 
 	<properties>
